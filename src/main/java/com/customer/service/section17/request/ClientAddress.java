@@ -1,6 +1,7 @@
 package com.customer.service.section17.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.Embeddable;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
@@ -11,6 +12,7 @@ import lombok.*;
 @ToString
 @EqualsAndHashCode
 @Builder(toBuilder = true)
+@Embeddable
 public class ClientAddress {
 
     @JsonProperty("address")
@@ -24,7 +26,6 @@ public class ClientAddress {
     private String state;
 
     @JsonProperty("country")
-    @NotBlank(message = "please provide the country")
+    @NotBlank(message = "Please provide the country")
     private String country;
-
 }

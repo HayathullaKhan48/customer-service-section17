@@ -2,9 +2,7 @@ package com.customer.service.section17.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.*;
 
 @Getter
@@ -20,10 +18,12 @@ public class ClientRequest {
     @NotBlank(message = "Please provide username")
     private String clientName;
 
-    @JsonProperty("ClientAge")
-    private int clientAge;
+    @JsonProperty("clientAge")
+    @Min(value = 1, message = "Age must be greater than 0")
+    @Max(value = 120, message = "Age must be less than or equal to 120")
+    private Integer clientAge;
 
-    @JsonProperty("Client")
+    @JsonProperty("clientMobileNumber")
     @NotBlank(message = "Please provide clientMobileNumber")
     @Size(min = 10, max = 10,message = "Please provide the valid mobile number..")
     private String clientMobileNumber;
